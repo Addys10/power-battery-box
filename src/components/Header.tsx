@@ -24,7 +24,7 @@ export function Header() {
         <Link href="/" className="shrink-0">
           <Image src="/bpb-logo.png" alt="Battery Power Box" width={120} height={40} unoptimized className="h-8 w-auto" />
         </Link>
-        {NAV_ITEMS.filter((item) => item.href !== "/" && item.href !== "/kontakt").map(({ label, href }) => (
+        {NAV_ITEMS.filter((item) => item.href !== "/kontakt").map(({ label, href }) => (
           <Link
             key={href}
             href={href}
