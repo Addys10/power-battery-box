@@ -14,6 +14,10 @@
   --font-secondary: var(--font-secondary);
 }
 
+html {
+  background: var(--color-dark);
+}
+
 body {
   background: var(--color-light);
   color: var(--color-dark);
