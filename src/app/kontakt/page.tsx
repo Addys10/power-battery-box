@@ -30,10 +30,10 @@ export default function KontaktPage() {
                 Jiří Sládek
               </span>
               <a
-                href="mailto:info@batterypowerbox.com"
+                href="mailto:jirkasladek28@email.cz"
                 className="font-secondary text-base text-dark/80 transition-colors hover:text-accent"
               >
-                info@batterypowerbox.com
+                jirkasladek28@email.cz
               </a>
             </div>
 
@@ -53,8 +53,11 @@ export default function KontaktPage() {
               <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-dark">
                 <MapPin className="h-6 w-6 text-dark" strokeWidth={1.5} />
               </div>
-              <span className="font-secondary text-sm text-dark/80">
+              <span className="font-secondary text-sm font-bold text-dark">
                 Battery Power Box s.r.o.
+              </span>
+              <span className="font-secondary text-sm text-dark/80">
+                Střední 122, Šilheřovice, 747 15
               </span>
               <span className="font-secondary text-xs text-dark/50">
                 IČO 19709876 &middot; DIČ CZ 19709876

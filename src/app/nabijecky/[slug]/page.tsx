@@ -97,7 +97,7 @@ export default async function ChargerPage({ params }: Props) {
                     +420 737 167 009
                   </a>
                   <a
-                    href="mailto:info@batterypowerbox.com"
+                    href="mailto:jirkasladek28@email.cz"
                     className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-light/20 px-6 py-2.5 font-secondary text-sm font-bold text-light transition-colors hover:border-accent hover:text-accent"
                   >
                     <Mail className="h-4 w-4" />

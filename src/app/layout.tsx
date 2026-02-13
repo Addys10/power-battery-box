@@ -72,7 +72,7 @@ export default function RootLayout({
               name: "Battery Power Box s.r.o.",
               url: siteUrl,
               telephone: "+420737167009",
-              email: "info@batterypowerbox.com",
+              email: "jirkasladek28@email.cz",
               description:
                 "Bateriová úložiště energie pro rybáře. Předimenzované systémy s fotovoltaickými komponenty a BMS.",
               address: {

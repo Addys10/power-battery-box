@@ -46,8 +46,8 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-1.5 font-secondary text-sm text-light/80">
               <span className="font-bold">Jiří Sládek</span>
-              <a href="mailto:info@batterypowerbox.com" className="transition-colors hover:text-accent">
-                info@batterypowerbox.com
+              <a href="mailto:jirkasladek28@email.cz" className="transition-colors hover:text-accent">
+                jirkasladek28@email.cz
               </a>
               <a href="tel:+420737167009" className="transition-colors hover:text-accent">
                 +420 737 167 009
