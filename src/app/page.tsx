@@ -79,7 +79,7 @@ export default function Home() {
               <br />
               která tě dovede k cíli.{" "}
               <svg
-                className="ml-10 inline-block w-[clamp(2rem,6vw,5rem)] translate-y-[clamp(0.5rem,1.5vw,1.25rem)]"
+                className="ml-2 inline-block w-[clamp(2rem,6vw,5rem)] translate-y-[clamp(0.5rem,1.5vw,1.25rem)] min-[470px]:ml-10"
                 viewBox="0 0 40 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

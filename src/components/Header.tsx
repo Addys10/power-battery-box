@@ -65,16 +65,16 @@ export function Header() {
         <button
           onClick={() => setOpen(!open)}
           aria-label="Menu"
-          className="relative z-[60] flex cursor-pointer flex-col justify-center gap-1.5"
+          className="flex cursor-pointer flex-col justify-center gap-1.5"
         >
           <span
-            className={`block h-[3px] w-6 rounded-full transition-all duration-300 ${open ? "translate-y-[9px] rotate-45 bg-light" : "bg-dark"}`}
+            className={`block h-[3px] w-6 rounded-full bg-dark transition-transform duration-300 ${open ? "translate-y-[9px] rotate-45" : ""}`}
           />
           <span
-            className={`block h-[3px] w-6 rounded-full transition-all duration-300 ${open ? "opacity-0" : "bg-dark"}`}
+            className={`block h-[3px] w-6 rounded-full bg-dark transition-opacity duration-300 ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-[3px] w-6 rounded-full transition-all duration-300 ${open ? "-translate-y-[9px] -rotate-45 bg-light" : "bg-dark"}`}
+            className={`block h-[3px] w-6 rounded-full bg-dark transition-transform duration-300 ${open ? "-translate-y-[9px] -rotate-45" : ""}`}
           />
         </button>
       </div>
@@ -82,24 +82,24 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-50 flex flex-col bg-dark min-[1000px]:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute right-0 top-16 z-50 w-full overflow-hidden min-[1000px]:hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <nav className="flex flex-1 flex-col items-center justify-center gap-6">
+            <nav className="flex flex-col bg-dark">
               {NAV_ITEMS.map(({ label, href }, i) => (
                 <motion.div
                   key={href}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.06, duration: 0.3 }}
+                  initial={{ x: 20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.04, duration: 0.2 }}
                 >
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
-                    className="block font-secondary text-2xl font-bold tracking-wide text-light transition-colors hover:text-accent"
+                    className="block px-8 py-3.5 font-secondary text-base font-bold tracking-wide text-light transition-colors hover:text-accent"
                   >
                     {label}
                   </Link>
