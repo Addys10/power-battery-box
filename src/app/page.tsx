@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ShieldCheck, SunMedium, Cpu, Fish, Zap } from "lucide-react";
 
 export default function Home() {
@@ -7,11 +8,11 @@ export default function Home() {
       <section className="relative bg-dark">
         <Image
           src="/hero-img.png"
-          alt=""
+          alt="Battery Power Box — bateriové úložiště energie"
           width={1920}
           height={1080}
           priority
-          unoptimized
+          sizes="100vw"
           className="h-auto w-full"
         />
         <div className="absolute inset-0 z-10 flex items-center px-6 sm:px-10 md:pl-20">
@@ -27,6 +28,7 @@ export default function Home() {
                 fill="none"
                 preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path
                   d="M2 10 Q100 -2 198 10"
@@ -40,8 +42,9 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="bg-white">
       {/* Quote section */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-24 md:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-24 md:py-32">
         {/* Accent blurs */}
         <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/50 blur-[120px]" />
         <div className="absolute left-1/3 top-1/4 h-64 w-64 rounded-full bg-accent/40 blur-[110px]" />
@@ -54,7 +57,7 @@ export default function Home() {
               alt="Jiří Kapr"
               width={400}
               height={500}
-              unoptimized
+              sizes="30vw"
               className="h-auto w-full object-cover"
             />
           </div>
@@ -67,6 +70,7 @@ export default function Home() {
                 viewBox="0 0 40 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path
                   d="M0 20C0 10 6 2 16 0l2 4c-6 3-9 7-9 12h9v14H0V20zm22 0C22 10 28 2 38 0l2 4c-6 3-9 7-9 12h9v14H22V20z"
@@ -83,6 +87,7 @@ export default function Home() {
                 viewBox="0 0 40 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path
                   d="M18 10C18 20 12 28 2 30L0 26c6-3 9-7 9-12H0V0h18v10zm22 0C40 20 34 28 24 30l-2-4c6-3 9-7 9-12h-9V0h18v10z"
@@ -95,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Why choose Battery power box? */}
-      <section className="relative overflow-hidden bg-white pb-20 sm:pb-28 md:pb-36">
+      <section className="relative overflow-hidden pb-20 sm:pb-28 md:pb-36">
         {/* Accent blurs */}
         <div className="absolute -right-20 top-10 h-[30rem] w-[30rem] rounded-full bg-accent/40 blur-[160px]" />
         <div className="absolute -left-10 bottom-20 h-96 w-96 rounded-full bg-accent/40 blur-[140px]" />
@@ -107,7 +112,7 @@ export default function Home() {
           </h2>
 
           {/* Top row - 3 items */}
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
             {/* 1 - Quality */}
             <div className="flex flex-col items-center text-center">
               <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
@@ -140,7 +145,7 @@ export default function Home() {
           </div>
 
           {/* Bottom row - 2 items centered */}
-          <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 sm:px-[16.666%]">
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 sm:px-[16.666%]">
             {/* 4 - Fishing */}
             <div className="flex flex-col items-center text-center">
               <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
@@ -161,23 +166,49 @@ export default function Home() {
               </p>
             </div>
           </div>
+
+          <div className="mt-14 flex justify-center sm:mt-20">
+            <Link
+              href="/battery-boxy"
+              className="inline-flex items-center gap-2 rounded-full bg-dark px-8 py-3 font-secondary text-base font-bold tracking-wide text-light transition-opacity hover:opacity-80"
+            >
+              Prohlédnout nabídku
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10m0 0L9 4m4 4L9 12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Large image section */}
-      <section className="bg-white px-6 pb-10 sm:px-10 sm:pb-16 md:px-20 md:pb-20">
+      <section className="px-6 pb-10 sm:px-10 sm:pb-16 md:px-20 md:pb-20">
         <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl">
           <Image
             src="/jirik-kapr2.png"
             alt="Jiří s kaprem"
             width={1920}
             height={1080}
-            unoptimized
+            sizes="(max-width: 1024px) 90vw, 960px"
             className="h-auto w-full"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent/80 via-accent/30 via-[33%] to-transparent" />
         </div>
       </section>
+      </div>
     </main>
   );
 }

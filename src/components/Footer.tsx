@@ -14,7 +14,6 @@ export function Footer() {
               alt="Battery Power Box"
               width={200}
               height={80}
-              unoptimized
               className="h-auto w-40 sm:w-48"
             />
             <p className="mt-3 font-secondary text-sm italic text-accent">
@@ -64,12 +63,8 @@ export function Footer() {
               &copy; 2025 Battery power box s.r.o., IČO 19709876, DIČ CZ 19709876 (plátci DPH)
             </p>
             <div className="flex gap-6 font-secondary text-xs text-light/50">
-              <Link href="#" className="transition-colors hover:text-accent">
-                Obchodní podmínky
-              </Link>
-              <Link href="#" className="transition-colors hover:text-accent">
-                Cookies
-              </Link>
+              <span className="cursor-not-allowed">Obchodní podmínky</span>
+              <span className="cursor-not-allowed">Cookies</span>
             </div>
           </div>
         </div>

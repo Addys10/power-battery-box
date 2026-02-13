@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata: Metadata = {
   title: "Powerbanky",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 export default function PowerbankyPage() {
   return (
     <main>
-      <h1>Powerbanky</h1>
+      <ComingSoon title="Powerbanky" />
     </main>
   );
 }

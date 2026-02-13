@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata: Metadata = {
   title: "Battery Boxy",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 export default function BatteryBoxyPage() {
   return (
     <main>
-      <h1>Battery Boxy</h1>
+      <ComingSoon title="Battery Boxy" />
     </main>
   );
 }
