@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Afacad_Flux, Poppins } from "next/font/google";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const afacadFlux = Afacad_Flux({
@@ -33,7 +34,10 @@ export default function RootLayout({
         className={`${afacadFlux.variable} ${poppins.variable} antialiased`}
       >
         <Header />
-        {children}
+        <div className="flex min-h-screen flex-col">
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 
 const NAV_ITEMS = [
@@ -20,7 +21,10 @@ export function Header() {
     <header className="relative z-50 w-full bg-accent">
       {/* Desktop nav (>= 1000px) */}
       <nav className="mx-auto hidden h-16 max-w-7xl items-center justify-center gap-8 px-6 whitespace-nowrap min-[1000px]:flex">
-        {NAV_ITEMS.filter((item) => item.href !== "/kontakt").map(({ label, href }) => (
+        <Link href="/" className="shrink-0">
+          <Image src="/bpb-logo.png" alt="Battery Power Box" width={120} height={40} unoptimized className="h-8 w-auto" />
+        </Link>
+        {NAV_ITEMS.filter((item) => item.href !== "/" && item.href !== "/kontakt").map(({ label, href }) => (
           <Link
             key={href}
             href={href}
@@ -54,7 +58,10 @@ export function Header() {
       </nav>
 
       {/* Mobile nav (< 1000px) */}
-      <div className="flex h-16 items-center px-6 min-[1000px]:hidden">
+      <div className="flex h-16 items-center justify-between px-6 min-[1000px]:hidden">
+        <Link href="/">
+          <Image src="/bpb-logo.png" alt="Battery Power Box" width={100} height={36} unoptimized className="h-7 w-auto" />
+        </Link>
         <button
           onClick={() => setOpen(!open)}
           aria-label="Menu"
