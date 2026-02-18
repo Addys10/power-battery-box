@@ -1,6 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, SunMedium, Cpu, Fish, Zap } from "lucide-react";
+import { AnimateIn } from "@/components/AnimateIn";
+import { HeroText } from "@/components/HeroText";
+
+const features = [
+  {
+    icon: ShieldCheck,
+    text: "Celé systémy jsou předimenzované. Sestava je složena z těch nejkvalitnějších komponentů, které jsou ověřeny v praxi. Komponenty jsou použity ve všech bateriových sestavách.",
+  },
+  {
+    icon: SunMedium,
+    text: "Hlavní inspirací jsou součástky používané ve fotovoltaice. Jelikož se už nějaký pátek zabývám a podnikám ve výstavbě fotovoltaických systémů, tak jsem si z toho hodně odnesl k rybaření.",
+  },
+  {
+    icon: Cpu,
+    text: "BMS řídí procesy ve velkých bateriových sestavách určených pro výrobní závody. Její jmenovitý vybíjecí proud je 200A, což je až pro nás rybáře nepředstavitelné (bereme max. 40–60A).",
+  },
+  {
+    icon: Fish,
+    text: "Navrženo rybáři pro rybáře. Každý box je testovaný přímo u vody v reálných podmínkách, aby vydržel celý víkendový maraton bez nutnosti dobíjení.",
+  },
+  {
+    icon: Zap,
+    text: "Kapacita, na kterou se můžeš spolehnout. Echosoundy, signalizátory, osvětlení i nabíjení telefonu — vše z jednoho zdroje, bez kompromisů a kdykoliv připravené.",
+  },
+];
 
 export default function Home() {
   return (
@@ -16,34 +41,13 @@ export default function Home() {
           className="h-auto w-full"
         />
         <div className="absolute inset-0 z-10 flex items-center px-6 sm:px-10 md:pl-20">
-          <h1 className="whitespace-nowrap font-secondary leading-tight text-light text-xl sm:text-3xl md:text-4xl lg:text-6xl">
-            <span className="font-bold">Nyní již neřeš energii,</span>
-            <br />
-            jen jezdi a{" "}
-            <span className="relative inline-block font-bold">
-              plň si své sny
-              <svg
-                className="absolute -bottom-4 left-0 w-full"
-                viewBox="0 0 200 12"
-                fill="none"
-                preserveAspectRatio="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 10 Q100 -2 198 10"
-                  stroke="var(--color-accent)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </h1>
+          <HeroText />
         </div>
       </section>
 
       <div className="bg-white">
       {/* Quote section */}
+      <AnimateIn preset="fadeIn">
       <section className="relative overflow-hidden py-16 sm:py-24 md:py-32">
         {/* Accent blurs */}
         <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/50 blur-[120px]" />
@@ -98,6 +102,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </AnimateIn>
 
       {/* Why choose Battery power box? */}
       <section className="relative overflow-hidden pb-20 sm:pb-28 md:pb-36">
@@ -107,107 +112,89 @@ export default function Home() {
         <div className="absolute left-[60%] top-[40%] h-72 w-72 rounded-full bg-accent/40 blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-10">
-          <h2 className="mb-14 text-center font-secondary text-[clamp(1.75rem,4.5vw,3.5rem)] font-bold leading-tight text-dark sm:mb-20">
-            Proč zvolit Battery power box?
-          </h2>
+          <AnimateIn preset="fadeUp">
+            <h2 className="mb-14 text-center font-secondary text-[clamp(1.75rem,4.5vw,3.5rem)] font-bold leading-tight text-dark sm:mb-20">
+              Proč zvolit Battery power box?
+            </h2>
+          </AnimateIn>
 
           {/* Top row - 3 items */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
-            {/* 1 - Quality */}
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
-                <ShieldCheck className="h-8 w-8 text-dark" strokeWidth={1.5} />
-              </div>
-              <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
-                Celé systémy jsou předimenzované. Sestava je složena z těch nejkvalitnějších komponentů, které jsou ověřeny v praxi. Komponenty jsou použity ve všech bateriových sestavách.
-              </p>
-            </div>
-
-            {/* 2 - Solar */}
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
-                <SunMedium className="h-8 w-8 text-dark" strokeWidth={1.5} />
-              </div>
-              <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
-                Hlavní inspirací jsou součástky používané ve fotovoltaice. Jelikož se už nějaký pátek zabývám a podnikám ve výstavbě fotovoltaických systémů, tak jsem si z toho hodně odnesl k rybaření.
-              </p>
-            </div>
-
-            {/* 3 - BMS */}
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
-                <Cpu className="h-8 w-8 text-dark" strokeWidth={1.5} />
-              </div>
-              <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
-                BMS řídí procesy ve velkých bateriových sestavách určených pro výrobní závody. Její jmenovitý vybíjecí proud je 200A, což je až pro nás rybáře nepředstavitelné (bereme max. 40–60A).
-              </p>
-            </div>
+            {features.slice(0, 3).map((feature, i) => (
+              <AnimateIn key={i} preset="fadeUp" delay={i * 0.1}>
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
+                    <feature.icon className="h-8 w-8 text-dark" strokeWidth={1.5} />
+                  </div>
+                  <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
+                    {feature.text}
+                  </p>
+                </div>
+              </AnimateIn>
+            ))}
           </div>
 
           {/* Bottom row - 2 items centered */}
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 sm:px-[16.666%]">
-            {/* 4 - Fishing */}
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
-                <Fish className="h-8 w-8 text-dark" strokeWidth={1.5} />
-              </div>
-              <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
-                Navrženo rybáři pro rybáře. Každý box je testovaný přímo u vody v reálných podmínkách, aby vydržel celý víkendový maraton bez nutnosti dobíjení.
-              </p>
-            </div>
-
-            {/* 5 - Energy */}
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
-                <Zap className="h-8 w-8 text-dark" strokeWidth={1.5} />
-              </div>
-              <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
-                Kapacita, na kterou se můžeš spolehnout. Echosoundy, signalizátory, osvětlení i nabíjení telefonu — vše z jednoho zdroje, bez kompromisů a kdykoliv připravené.
-              </p>
-            </div>
+            {features.slice(3).map((feature, i) => (
+              <AnimateIn key={i + 3} preset="fadeUp" delay={(i + 3) * 0.1}>
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-dark">
+                    <feature.icon className="h-8 w-8 text-dark" strokeWidth={1.5} />
+                  </div>
+                  <p className="max-w-xs font-secondary text-sm italic leading-relaxed text-dark/80">
+                    {feature.text}
+                  </p>
+                </div>
+              </AnimateIn>
+            ))}
           </div>
 
-          <div className="mt-14 flex justify-center sm:mt-20">
-            <Link
-              href="/battery-boxy"
-              className="inline-flex items-center gap-2 rounded-full bg-dark px-8 py-3 font-secondary text-base font-bold tracking-wide text-light transition-opacity hover:opacity-80"
-            >
-              Prohlédnout nabídku
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
+          <AnimateIn preset="fadeUp" delay={0.3}>
+            <div className="mt-14 flex justify-center sm:mt-20">
+              <Link
+                href="/battery-boxy"
+                className="inline-flex items-center gap-2 rounded-full bg-dark px-8 py-3 font-secondary text-base font-bold tracking-wide text-light transition-all hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]"
               >
-                <path
-                  d="M3 8h10m0 0L9 4m4 4L9 12"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-          </div>
+                Prohlédnout nabídku
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10m0 0L9 4m4 4L9 12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </AnimateIn>
         </div>
       </section>
 
       {/* Large image section */}
-      <section className="px-6 pb-10 sm:px-10 sm:pb-16 md:px-20 md:pb-20">
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl">
-          <Image
-            src="/jirik-kapr2.png"
-            alt="Jiří s kaprem"
-            width={1920}
-            height={1080}
-            sizes="(max-width: 1024px) 90vw, 960px"
-            className="h-auto w-full"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent/80 via-accent/30 via-[33%] to-transparent" />
-        </div>
-      </section>
+      <AnimateIn preset="fadeUp">
+        <section className="px-6 pb-10 sm:px-10 sm:pb-16 md:px-20 md:pb-20">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl">
+            <Image
+              src="/jirik-kapr2.png"
+              alt="Jiří s kaprem"
+              width={1920}
+              height={1080}
+              sizes="(max-width: 1024px) 90vw, 960px"
+              className="h-auto w-full"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent/80 via-accent/30 via-[33%] to-transparent" />
+          </div>
+        </section>
+      </AnimateIn>
       </div>
     </main>
   );

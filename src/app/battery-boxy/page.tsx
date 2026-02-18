@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { products } from "@/data/products";
+import { ProductCard } from "@/components/ProductCard";
 
 export const metadata: Metadata = {
   title: "Battery Boxy",
@@ -26,48 +25,15 @@ export default function BatteryBoxyPage() {
           </p>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {products.map((product) => (
-              <Link
+            {products.map((product, i) => (
+              <ProductCard
                 key={product.slug}
                 href={`/battery-boxy/${product.slug}`}
-                className="group overflow-hidden rounded-2xl border-2 border-dark/10 transition-colors hover:border-accent"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-dark/5">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="px-6 py-5">
-                  <h2 className="font-secondary text-lg font-bold text-dark">
-                    {product.name}
-                  </h2>
-                  <p className="mt-1 font-secondary text-sm text-dark/60">
-                    {product.subtitle}
-                  </p>
-                  <div className="mt-3 flex items-center gap-2 font-secondary text-sm font-bold text-accent">
-                    Zobrazit detail
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M3 8h10m0 0L9 4m4 4L9 12"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
+                image={product.image}
+                name={product.name}
+                subtitle={product.subtitle}
+                index={i}
+              />
             ))}
           </div>
         </div>

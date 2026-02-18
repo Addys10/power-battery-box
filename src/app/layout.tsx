@@ -87,6 +87,7 @@ export default function RootLayout({
         className={`${afacadFlux.variable} ${poppins.variable} antialiased`}
       >
         <Header />
+        <div className="h-16" />
         <div className="flex min-h-screen flex-col">
           <div className="flex-1">{children}</div>
           <Footer />

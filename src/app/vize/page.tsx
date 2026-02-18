@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ShieldCheck, SunMedium, Cpu, Cable, Flame, Award } from "lucide-react";
+import { AnimateIn } from "@/components/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Má vize",
@@ -17,19 +18,23 @@ export default function VizePage() {
         <div className="absolute right-1/4 bottom-1/4 h-72 w-72 rounded-full bg-accent/30 blur-[110px]" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-10">
-          <h1 className="mb-8 text-center font-secondary text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-dark">
-            Má vize
-          </h1>
-          <div className="mx-auto flex max-w-2xl items-center justify-center gap-5 rounded-2xl bg-dark px-8 py-8 sm:px-14 sm:py-10">
-            <Award
-              className="hidden h-12 w-12 shrink-0 text-accent sm:block"
-              strokeWidth={1.5}
-            />
-            <p className="text-center font-secondary text-lg font-bold leading-relaxed text-light sm:text-left sm:text-xl">
-              Každou baterii dělám poctivě a&nbsp;s&nbsp;precizností, jako by
-              měla sloužit mě samotnému.
-            </p>
-          </div>
+          <AnimateIn preset="fadeUp">
+            <h1 className="mb-8 text-center font-secondary text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-dark">
+              Má vize
+            </h1>
+          </AnimateIn>
+          <AnimateIn preset="fadeUp" delay={0.15}>
+            <div className="mx-auto flex max-w-2xl items-center justify-center gap-5 rounded-2xl bg-dark px-8 py-8 sm:px-14 sm:py-10">
+              <Award
+                className="hidden h-12 w-12 shrink-0 text-accent sm:block"
+                strokeWidth={1.5}
+              />
+              <p className="text-center font-secondary text-lg font-bold leading-relaxed text-light sm:text-left sm:text-xl">
+                Každou baterii dělám poctivě a&nbsp;s&nbsp;precizností, jako by
+                měla sloužit mě samotnému.
+              </p>
+            </div>
+          </AnimateIn>
         </div>
       </section>
 
@@ -40,7 +45,7 @@ export default function VizePage() {
 
           <div className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10">
             <div className="flex flex-col gap-10 md:flex-row md:items-center md:gap-14">
-              <div className="flex-1">
+              <AnimateIn preset="slideRight" className="flex-1">
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dark">
                   <ShieldCheck className="h-7 w-7 text-dark" strokeWidth={1.5} />
                 </div>
@@ -54,8 +59,8 @@ export default function VizePage() {
                   a vydrží. Jsou použity ve všech bateriových sestavách bez
                   výjimek a kompromisů.
                 </p>
-              </div>
-              <div className="w-full shrink-0 overflow-hidden rounded-2xl md:w-[40%]">
+              </AnimateIn>
+              <AnimateIn preset="slideLeft" className="w-full shrink-0 overflow-hidden rounded-2xl md:w-[40%]">
                 <Image
                   src="/vize/b1.png"
                   alt="Battery box na váze — odolný TACTIX kufr"
@@ -64,7 +69,7 @@ export default function VizePage() {
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="h-auto w-full"
                 />
-              </div>
+              </AnimateIn>
             </div>
           </div>
         </section>
@@ -75,7 +80,7 @@ export default function VizePage() {
 
           <div className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10">
             <div className="flex flex-col-reverse gap-10 md:flex-row md:items-center md:gap-14">
-              <div className="w-full shrink-0 overflow-hidden rounded-2xl md:w-[40%]">
+              <AnimateIn preset="slideRight" className="w-full shrink-0 overflow-hidden rounded-2xl md:w-[40%]">
                 <Image
                   src="/vize/b2.png"
                   alt="Battery box napájí echosounder Lowrance"
@@ -84,8 +89,8 @@ export default function VizePage() {
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="h-auto w-full"
                 />
-              </div>
-              <div className="flex-1">
+              </AnimateIn>
+              <AnimateIn preset="slideLeft" className="flex-1">
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dark">
                   <SunMedium className="h-7 w-7 text-dark" strokeWidth={1.5} />
                 </div>
@@ -100,7 +105,7 @@ export default function VizePage() {
                   jsem vždy obdivoval a energii na rybách jsem vždy potřeboval —
                   proto byla tahle cesta jasná volba.
                 </p>
-              </div>
+              </AnimateIn>
             </div>
           </div>
         </section>
@@ -111,7 +116,7 @@ export default function VizePage() {
 
           <div className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10">
             <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-14">
-              <div className="flex-1">
+              <AnimateIn preset="slideRight" className="flex-1">
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dark">
                   <Cpu className="h-7 w-7 text-dark" strokeWidth={1.5} />
                 </div>
@@ -133,8 +138,8 @@ export default function VizePage() {
                   vybíjecí křivku na konstantní úrovni, což dává bateriím
                   maximální životnost a účinnost.
                 </p>
-              </div>
-              <div className="w-full shrink-0 overflow-hidden rounded-2xl md:w-[40%]">
+              </AnimateIn>
+              <AnimateIn preset="slideLeft" className="w-full shrink-0 overflow-hidden rounded-2xl md:w-[40%]">
                 <Image
                   src="/vize/b3.png"
                   alt="Battery box v akci na lodi"
@@ -143,7 +148,7 @@ export default function VizePage() {
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="h-auto w-full"
                 />
-              </div>
+              </AnimateIn>
             </div>
           </div>
         </section>
@@ -153,7 +158,7 @@ export default function VizePage() {
           <div className="absolute -right-10 bottom-10 h-80 w-80 rounded-full bg-accent/30 blur-[130px]" />
 
           <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-1 gap-10 px-6 sm:grid-cols-2 sm:px-10">
-            <div>
+            <AnimateIn preset="fadeUp" delay={0}>
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dark">
                 <Cable className="h-7 w-7 text-dark" strokeWidth={1.5} />
               </div>
@@ -172,9 +177,9 @@ export default function VizePage() {
                 základní izolací je nalisovaný zhášecí prášek, který chladí
                 a je schopný hasit ohnisko vzniku jiskry.
               </p>
-            </div>
+            </AnimateIn>
 
-            <div>
+            <AnimateIn preset="fadeUp" delay={0.15}>
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dark">
                 <Flame className="h-7 w-7 text-dark" strokeWidth={1.5} />
               </div>
@@ -208,7 +213,7 @@ export default function VizePage() {
                   UNE 21123, UNE 20.460-5-52, UTE C 32-502
                 </li>
               </ul>
-            </div>
+            </AnimateIn>
           </div>
         </section>
 
