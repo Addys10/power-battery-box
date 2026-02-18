@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Phone, Mail, ArrowLeft, ShieldCheck } from "lucide-react";
 import { products, getProductBySlug } from "@/data/products";
-import { SpecsTable } from "@/components/SpecsTable";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -96,14 +95,14 @@ export default async function ProductPage({ params }: Props) {
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <a
                     href="tel:+420737167009"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-2.5 font-secondary text-sm font-bold text-dark transition-all hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-2.5 font-secondary text-sm font-bold text-dark transition-opacity hover:opacity-80"
                   >
                     <Phone className="h-4 w-4" />
                     +420 737 167 009
                   </a>
                   <a
                     href="mailto:jirkasladek28@email.cz"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-light/20 px-6 py-2.5 font-secondary text-sm font-bold text-light transition-all hover:scale-[1.03] hover:border-accent hover:text-accent active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-light/20 px-6 py-2.5 font-secondary text-sm font-bold text-light transition-colors hover:border-accent hover:text-accent"
                   >
                     <Mail className="h-4 w-4" />
                     Napsat email
@@ -122,7 +121,23 @@ export default async function ProductPage({ params }: Props) {
             <h2 className="mb-8 font-secondary text-2xl font-bold text-dark">
               Technické parametry
             </h2>
-            <SpecsTable specs={product.specs} />
+            <div className="overflow-hidden rounded-2xl border-2 border-dark/10">
+              {product.specs.map((spec, i) => (
+                <div
+                  key={spec.label}
+                  className={`flex flex-col gap-1 px-6 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 ${
+                    i % 2 === 0 ? "bg-dark/[0.03]" : ""
+                  }`}
+                >
+                  <span className="font-secondary text-sm font-bold text-dark">
+                    {spec.label}
+                  </span>
+                  <span className="font-secondary text-sm text-dark/70 sm:text-right">
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>

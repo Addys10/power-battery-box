@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 const NAV_ITEMS = [
   { label: "DOMŮ", href: "/" },
@@ -17,25 +17,13 @@ const NAV_ITEMS = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50);
-  });
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-accent/90 shadow-sm backdrop-blur-md"
-          : "bg-accent"
-      }`}
-    >
+    <header className="relative z-50 w-full bg-accent">
       {/* Desktop nav (>= 1000px) */}
       <nav className="mx-auto hidden h-16 max-w-7xl items-center justify-center gap-8 px-6 whitespace-nowrap min-[1000px]:flex">
         <Link href="/" className="shrink-0">

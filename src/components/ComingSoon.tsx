@@ -18,7 +18,7 @@ export function ComingSoon({ title }: ComingSoonProps) {
         </p>
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full bg-dark px-6 py-3 font-secondary text-sm font-bold text-light transition-all hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]"
+          className="inline-flex items-center gap-2 rounded-full bg-dark px-6 py-3 font-secondary text-sm font-bold text-light transition-opacity hover:opacity-80"
         >
           <svg
             width="16"
