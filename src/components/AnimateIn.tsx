@@ -1,14 +1,32 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import type { ElementType, ReactNode, CSSProperties } from "react";
+import { motion, type Variants } from "motion/react";
+import type { ElementType, ComponentPropsWithoutRef } from "react";
 
-export type AnimateInPreset =
-  | "fadeUp"
-  | "fadeIn"
-  | "scaleIn"
-  | "slideLeft"
-  | "slideRight";
+const presets = {
+  fadeUp: {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  },
+  fadeIn: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  },
+  scaleIn: {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1 },
+  },
+  slideLeft: {
+    hidden: { opacity: 0, x: 40 },
+    visible: { opacity: 1, x: 0 },
+  },
+  slideRight: {
+    hidden: { opacity: 0, x: -40 },
+    visible: { opacity: 1, x: 0 },
+  },
+} as const satisfies Record<string, Variants>;
+
+export type AnimateInPreset = keyof typeof presets;
 
 interface AnimateInProps {
   preset?: AnimateInPreset;
@@ -16,7 +34,8 @@ interface AnimateInProps {
   duration?: number;
   className?: string;
   as?: ElementType;
-  children: ReactNode;
+  once?: boolean;
+  children: React.ReactNode;
 }
 
 export function AnimateIn({
@@ -24,40 +43,19 @@ export function AnimateIn({
   delay = 0,
   duration = 0.5,
   className,
-  as: Tag = "div",
+  as = "div",
+  once = true,
   children,
 }: AnimateInProps) {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("in-view");
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "-50px" }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const style: CSSProperties = {
-    "--anim-delay": `${delay}s`,
-    "--anim-dur": `${duration}s`,
-  } as CSSProperties;
+  const Tag = motion.create(as as "div");
 
   return (
     <Tag
-      ref={ref}
-      data-animate
-      data-preset={preset}
-      style={style}
+      variants={presets[preset]}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, margin: "-50px" }}
+      transition={{ duration, delay, ease: "easeOut" }}
       className={className}
     >
       {children}
