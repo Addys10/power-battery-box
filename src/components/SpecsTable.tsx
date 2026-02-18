@@ -1,26 +1,46 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 
 interface Spec {
   label: string;
   value: string;
 }
 
-interface SpecsTableProps {
-  specs: Spec[];
-}
+export function SpecsTable({ specs }: { specs: Spec[] }) {
+  const ref = useRef<HTMLDivElement>(null);
 
-export function SpecsTable({ specs }: SpecsTableProps) {
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+
+    const rows = Array.from(container.querySelectorAll<HTMLElement>("[data-row]"));
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          rows.forEach((row, i) => {
+            setTimeout(() => row.classList.add("in-view"), i * 35);
+          });
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-30px" }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-dark/10">
+    <div ref={ref} className="overflow-hidden rounded-2xl border-2 border-dark/10">
       {specs.map((spec, i) => (
-        <motion.div
+        <div
           key={spec.label}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20px" }}
-          transition={{ duration: 0.3, delay: i * 0.03, ease: "easeOut" }}
+          data-row
+          data-animate
+          data-preset="fadeUp"
+          style={{ "--anim-delay": "0s", "--anim-dur": "0.3s" } as React.CSSProperties}
           className={`flex flex-col gap-1 px-6 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 ${
             i % 2 === 0 ? "bg-dark/[0.03]" : ""
           }`}
@@ -31,7 +51,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
           <span className="font-secondary text-sm text-dark/70 sm:text-right">
             {spec.value}
           </span>
-        </motion.div>
+        </div>
       ))}
     </div>
   );

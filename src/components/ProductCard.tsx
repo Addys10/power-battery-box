@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 
 interface ProductCardProps {
   href: string;
@@ -21,12 +21,33 @@ export function ProductCard({
   index,
   imageClassName = "object-cover",
 }: ProductCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const delay = index * 100; // ms stagger
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => el.classList.add("in-view"), delay);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-50px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [index]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+    <div
+      ref={ref}
+      data-animate
+      data-preset="fadeUp"
+      style={{ "--anim-dur": "0.5s", "--anim-delay": "0s" } as React.CSSProperties}
     >
       <Link
         href={href}
@@ -42,12 +63,8 @@ export function ProductCard({
           />
         </div>
         <div className="px-6 py-5">
-          <h2 className="font-secondary text-lg font-bold text-dark">
-            {name}
-          </h2>
-          <p className="mt-1 font-secondary text-sm text-dark/60">
-            {subtitle}
-          </p>
+          <h2 className="font-secondary text-lg font-bold text-dark">{name}</h2>
+          <p className="mt-1 font-secondary text-sm text-dark/60">{subtitle}</p>
           <div className="mt-3 flex items-center gap-2 font-secondary text-sm font-bold text-accent">
             Zobrazit detail
             <svg
@@ -69,6 +86,6 @@ export function ProductCard({
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
